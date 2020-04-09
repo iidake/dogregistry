@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Dog registry - Koirarekisteri</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="container">
+		<h1>Koirarekisteri</h1>
+		<br>
+		<table class="table table-hover">
+	    <thead>
+	     	<tr>
+	        	<th>Koiran nimi</th>
+	        	<th>Omistaja</th>
+	        	<th>Rotu</th>
+	        	<th> <!-- muokkaus --> </th>
+	        	<th> <!-- poisto --> </th>
+	     	</tr>
+	    </thead>
+		<tbody>
+			<tr th:each="dog : ${dogs}">
+				<td th:text="${dog.name}">Koiran nimi</td>
+				<td th:text="${dog.owner}">Omistaja</td>
+				<td th:text="${dog.breed.name}">Rotu</td>
+				<td><a th:href="@{/update/{id}(id=${dog.dogId})}">Muokkaa tietoja</a></td>
+				<td><a th:href="@{/delete/{id}(id=${dog.dogId})}">Poista</a></td> 
+			</tr>
+		</tbody>
+		</table>
+		<a href="/newdog" class="btn btn-info" role="button">Lisää uusi koira</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Dog registry - Koirarekisteri</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="container">
+		<h1>Koirarekisteri</h1>
+		<br>
+		<table class="table table-hover">
+	    <thead>
+	     	<tr>
+	        	<th>Rotu</th>
+	        	<th>FCI roturyhmä</th>
+	        	<th> <!-- Muokkaus --> </th>
+	     	</tr>
+	    </thead>
+		<tbody>
+			<tr th:each="breed : ${breeds}">
+				<td th:text="${breed.name}">rotu</td>
+				<td th:text="${breed.FCIBreedGroup.name}">FCI roturyhmä</td>
+				<td><a th:href="@{/updateBreed/{id}(id=${breed.breedId})}">Muokkaa tietoja</a></td>
+			</tr>
+		</tbody>
+		</table>
+		<a href="/newbreed" class="btn btn-info" role="button">Lisää uusi rotu</a>
+	</div>
+</body>
+</html>

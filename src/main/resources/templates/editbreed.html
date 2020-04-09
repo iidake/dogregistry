@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Dog registry - Koirarekisteri</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div class="container">
+	<h1>Muokkaa rodun tietoja</h1>
+			<form th:object="${breed}" th:action="@{/saveBreed}" action="/action_page.php" method="post">
+			<input type="hidden" id="breedId" th:field="*{breedId}" />
+		  	<div class="form-group">
+			  	<label for="name">Rotu</label>
+				<input type="text" class="form-control" id="name" th:field="*{name}" />
+			</div>
+			<div class="dropdown">				
+			  	<label for="breedgrouplist">Roturyhmä</label>
+				 <select id="breedgrouplist" th:field="*{FCIBreedGroup}" class="form-control">
+	       			<option th:each="FCIBreedGroup: ${breedgroups}" th:value="${FCIBreedGroup.groupId}" th:text="${FCIBreedGroup.name}"></option>
+	    		</select>
+    		</div>
+    		<br>
+			<button type="submit" value="Save" class="btn btn-info">Tallenna</button>
+		</form>
+	</div>
+
+</body>
+</html>
