@@ -9,11 +9,15 @@
 <body>
 	<div class="container">
 		<h1>Koirarekisteri</h1>
-		<p>Tervetuloa Dog Registry - koirarekisteriin!</p>
+		<p>Tervetuloa Dog Registry - koirarekisteriin [[${#httpServletRequest.remoteUser}]]!</p>
 		<br>
-		<a href="/doglist" class="btn btn-light" role="button">Koiralistaus</a>
-		<a href="/breedlist" class="btn btn-light" role="button">Rotulistaus</a>
-		<a href="/breedgrouplist" class="btn btn-light" role="button">Roturyhmälistaus</a>
+		<a href="/doglist" class="btn btn-info" role="button">Koiralistaus</a>
+		<a href="/breedlist" class="btn btn-info" role="button">Rotulistaus</a>
+		<a href="/breedgrouplist" class="btn btn-info" role="button">Roturyhmälistaus</a>
+		<br><br>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Kirjaudu ulos" class="btn btn-danger"/>
+		</form>
 	</div>
 </body>
 </html>

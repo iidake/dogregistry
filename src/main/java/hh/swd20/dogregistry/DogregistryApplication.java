@@ -13,6 +13,8 @@ import hh.swd20.dogregistry.model.Dog;
 import hh.swd20.dogregistry.model.DogRepository;
 import hh.swd20.dogregistry.model.FCIBreedGroup;
 import hh.swd20.dogregistry.model.FCIBreedGroupRepository;
+import hh.swd20.dogregistry.model.User;
+import hh.swd20.dogregistry.model.UserRepository;
 
 @SpringBootApplication
 public class DogregistryApplication {
@@ -23,7 +25,7 @@ public class DogregistryApplication {
 	}
 
 	@Bean
-	public CommandLineRunner demo(DogRepository dogRepository, BreedRepository breedRepository, FCIBreedGroupRepository breedGroupRepository) {
+	public CommandLineRunner demo(DogRepository dogRepository, BreedRepository breedRepository, FCIBreedGroupRepository breedGroupRepository, UserRepository userRepository) {
 	return (args) -> {
 		log.info("save dogs");
 		
@@ -50,6 +52,11 @@ public class DogregistryApplication {
 		dogRepository.save(dog1);
 		dogRepository.save(dog2);
 		dogRepository.save(dog3);
+		
+		User user1 = new User("user", "$2a$04$xt9Bi1Vmnp/jTx6eULMtmeMpTtEsBYjgWYPy4ZmxcsdxMA.pTUp52", "user@mail.com", "USER");
+		User user2 = new User("admin", "$2a$04$QDzL8YmTLzBFRizwV5o7e.8Inz6QoBvTOLBN8FYqfk0Vqe.vWgXoS", "admin@gmail.com", "ADMIN");
+		userRepository.save(user1);
+		userRepository.save(user2);
 		
 		log.info("fetch all breedgroups");
 		for (FCIBreedGroup FCIBreedGroup : breedGroupRepository.findAll()) {

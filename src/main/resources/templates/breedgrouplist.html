@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 	<title>Dog registry - Koirarekisteri</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -20,10 +20,11 @@
 		<tbody>
 			<tr th:each="breedgroup : ${breedgroups}">
 				<td th:text="${breedgroup.name}">rotu</td>
-				<td><a th:href="@{/updateGroup/{id}(id=${breedgroup.groupId})}">Muokkaa tietoja</a></td>
+				<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/updateGroup/{id}(id=${breedgroup.groupId})}">Muokkaa tietoja</a></td>
 			</tr>
 		</tbody>
 		</table>
+		<a href="/index" class="btn btn-info" role="button">Palaa etusivulle</a>
 	</div>
 </body>
 </html>

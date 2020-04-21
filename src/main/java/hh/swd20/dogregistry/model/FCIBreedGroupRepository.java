@@ -1,4 +1,4 @@
-package hh.swd20.dogregistry.model;
+ package hh.swd20.dogregistry.model;
 
 import java.util.List;
 

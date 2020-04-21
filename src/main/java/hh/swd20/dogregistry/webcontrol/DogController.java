@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,12 +31,18 @@ public class DogController {
 	@Autowired
 	private FCIBreedGroupRepository breedGroupRepository;
 
+	//sisäänkirjautuminen
+    @RequestMapping(value="/login")
+    public String login() {	
+        return "login";
+    }	
+	
 	// etusivu
     @RequestMapping(value="/index")
     public String index() {	
         return "index";
     }	
-	
+    
 	// listaa kaikki koirat
     @RequestMapping(value= {"/doglist"})
     public String dogList(Model model) {	
@@ -71,6 +78,7 @@ public class DogController {
     } 
     
     // poista koira
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
     public String delete(@PathVariable("id") Long dogId, Model model) {
     	dogRepository.deleteById(dogId);
@@ -105,6 +113,7 @@ public class DogController {
     }
     
     // tyhjä lomake uuden rodun lisäämiseen
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/newbreed")
     public String addBreed(Model model){
     	model.addAttribute("breed", new Breed());
@@ -113,6 +122,7 @@ public class DogController {
     } 
     
     // muokkaa rodun tietoja
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/updateBreed/{id}", method = RequestMethod.GET)
     public String updateBreed(@PathVariable("id") Long breedId, Model model) {
     	model.addAttribute("breed", breedRepository.findById(breedId));
@@ -147,6 +157,7 @@ public class DogController {
     } 
     
     // muokkaa roturyhmän tietoja
+    @PreAuthorize("hasAuthority('ADMIN')")
     @RequestMapping(value = "/updateGroup/{id}", method = RequestMethod.GET)
     public String updateGroup(@PathVariable("id") Long groupId, Model model) {
     	model.addAttribute("breedgroup", breedGroupRepository.findById(groupId));
