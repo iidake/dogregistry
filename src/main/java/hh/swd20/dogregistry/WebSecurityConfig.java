@@ -21,12 +21,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+    	
+    
         http
-        .authorizeRequests().antMatchers("/css/**").permitAll() //
-        .and()
         .authorizeRequests()
-          .anyRequest().authenticated()
-          .and()
+        	.antMatchers("/css/**", "/login", "/index", "/doglist","/breedlist","/breedgrouplist","/dogs/**","/breeds/**").permitAll()
+        	.and()
+        
+        .authorizeRequests().anyRequest().authenticated()
+        .and().csrf().disable()
       .formLogin()
           .loginPage("/login")
           .defaultSuccessUrl("/index")
@@ -34,7 +37,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .and()
       .logout()
           .permitAll();
+    	
     }
+//        http
+//        .authorizeRequests().antMatchers("/css/**").permitAll() //
+//        .and()
+//        .authorizeRequests()
+//          .anyRequest().authenticated()
+//          .and()
+//      .formLogin()
+//          .loginPage("/login")
+//          .defaultSuccessUrl("/index")
+//          .permitAll()
+//          .and()
+//      .logout()
+//          .permitAll();
+//    }
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {

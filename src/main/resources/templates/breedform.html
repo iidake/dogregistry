@@ -5,10 +5,28 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script> 
+		$(document).ready(function(){
+		  $("#ohje").click(function(){
+		    $("#teksti").slideToggle("slow");
+		  });
+		});
+	</script>
+	<style>
+		#teksti {
+		  padding: 20px;
+		  display: none;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
 	<h1>Lisää uusi rotu</h1>
+		<button id="ohje" class="btn btn-light">Lue ohjeistus rodun lisäämiseen</button>
+		<p id="teksti"><b>Rotu:</b> Lisää rodun virallinen nimi.<br>
+		<b>Roturyhmä:</b> Lisää rodun virallinen FCI roturyhmä.</p>
+		<br>
 			<form th:object="${breed}" th:action="@{saveBreed}" action="/action_page.php" method="post">
 		  	<div class="form-group">
 			  	<label for="name">Rotu</label>

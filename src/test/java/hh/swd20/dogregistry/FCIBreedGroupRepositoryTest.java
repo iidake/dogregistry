@@ -10,35 +10,31 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import hh.swd20.dogregistry.model.Breed;
-import hh.swd20.dogregistry.model.Dog;
-import hh.swd20.dogregistry.model.DogRepository;
 import hh.swd20.dogregistry.model.FCIBreedGroup;
+import hh.swd20.dogregistry.model.FCIBreedGroupRepository;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class DogRepositoryTest {
+public class FCIBreedGroupRepositoryTest {
 
     @Autowired
-    private DogRepository repository;
+    private FCIBreedGroupRepository repository;
 
     @Test
     public void findByName() {
-        List<Dog> dogs = repository.findByName("Vilkas Vieteri");
-        
-        assertThat(dogs).hasSize(1);
-        assertThat(dogs.get(0).getOwner()).isEqualTo("Leena Katos");
+        List<FCIBreedGroup> breedgroups = repository.findByName("FCI 10 Vinttikoirat");
+        assertThat(breedgroups).hasSize(1);
     }  
     
     @Test
-    public void createNewDog() {
-    	Dog dog = new Dog("Etevän Elias", "Minna Virtanen", new Breed("Villakoira", new FCIBreedGroup("FCI 9 Seura- ja kääpiökoirat")));
-    	repository.save(dog);
-    	assertThat(dog.getDogId()).isNotNull();
+    public void createNewBreed() {
+    	FCIBreedGroup breedgroup = new FCIBreedGroup("FCI 9 Seura- ja kääpiökoirat");
+    	repository.save(breedgroup);
+    	assertThat(breedgroup.getGroupId()).isNotNull();
     }  
     
     @Test
-    public void deleteAllDogs() {
+    public void deleteAllBreedGroups() {
         repository.deleteAll();
         assertThat(repository.count()).isEqualTo(0);
     }   

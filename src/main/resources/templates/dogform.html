@@ -5,10 +5,29 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script> 
+		$(document).ready(function(){
+		  $("#ohje").click(function(){
+		    $("#teksti").slideToggle("slow");
+		  });
+		});
+	</script>
+	<style>
+		#teksti {
+		  padding: 20px;
+		  display: none;
+		}
+	</style>
 </head>
 <body>
 	<div class="container">
 		<h1>Lisää uusi koira</h1>
+		<button id="ohje" class="btn btn-light">Lue ohjeistus koiran lisäämiseen</button>
+		<p id="teksti"><b>Koiran nimi:</b> Lisää koiran virallinen kennelnimi.<br>
+		<b>Omistaja:</b> Lisää koiran omistajan koko nimi. Koiran omistaja on yleensä se henkilö kenen luona 
+		koira pääasiassa viettää aikaan, poikkeuksena sijoituskoirat.<br>
+		<b>Rotu:</b> Valitse valikosta koiran rotu.</p>
 		<br>
 		<form th:object="${dog}" th:action="@{save}" action="/action_page.php" method="post">
 		  	<div class="form-group">

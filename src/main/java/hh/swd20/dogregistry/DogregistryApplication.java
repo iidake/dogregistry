@@ -29,17 +29,33 @@ public class DogregistryApplication {
 	return (args) -> {
 		log.info("save dogs");
 		
-		FCIBreedGroup breedGroup1 = new FCIBreedGroup("FCI 5 Pystykorvat ja alkukantaiset koirat");
-		FCIBreedGroup breedGroup2 = new FCIBreedGroup("FCI 8 Noutajat, ylösajavat koirat ja vesikoirat");
-		FCIBreedGroup breedGroup3 = new FCIBreedGroup("FCI 10 Vinttikoirat");
+		FCIBreedGroup breedGroup1 = new FCIBreedGroup("FCI 1 Lammas- ja karjakoirat (paitsi sveitsinpaimenkoirat)");
+		FCIBreedGroup breedGroup2 = new FCIBreedGroup("FCI 2 Pinserit, snautserit, molossityyppiset ja sveitsinpaimenkoirat");
+		FCIBreedGroup breedGroup3 = new FCIBreedGroup("FCI 3 Terrierit");
+		FCIBreedGroup breedGroup4 = new FCIBreedGroup("FCI 4 Mäyräkoirat");
+		FCIBreedGroup breedGroup5 = new FCIBreedGroup("FCI 5 Pystykorvat ja alkukantaiset koirat");
+		FCIBreedGroup breedGroup6 = new FCIBreedGroup("FCI 6 Ajavat ja jäljestävät koirat");
+		FCIBreedGroup breedGroup7 = new FCIBreedGroup("FCI 7 Seisovat lintukoirat");
+		FCIBreedGroup breedGroup8 = new FCIBreedGroup("FCI 8 Noutajat, ylösajavat koirat ja vesikoirat");
+		FCIBreedGroup breedGroup9 = new FCIBreedGroup("FCI 9 Seurakoirat ja kääpiökoirat");
+		FCIBreedGroup breedGroup10 = new FCIBreedGroup("FCI 10 Vinttikoirat");
+	
 		
 		breedGroupRepository.save(breedGroup1);
 		breedGroupRepository.save(breedGroup2);
 		breedGroupRepository.save(breedGroup3);
+		breedGroupRepository.save(breedGroup4);
+		breedGroupRepository.save(breedGroup5);
+		breedGroupRepository.save(breedGroup6);
+		breedGroupRepository.save(breedGroup7);
+		breedGroupRepository.save(breedGroup8);
+		breedGroupRepository.save(breedGroup9);
+		breedGroupRepository.save(breedGroup10);
 		
-		Breed breed1 = new Breed("kultainennoutaja", breedGroup2);
-		Breed breed2 = new Breed("labradorinnoutaja", breedGroup2);
-		Breed breed3 = new Breed("whippet", breedGroup3);
+		
+		Breed breed1 = new Breed("Kultainennoutaja", breedGroup8);
+		Breed breed2 = new Breed("Labradorinnoutaja", breedGroup8);
+		Breed breed3 = new Breed("Whippet", breedGroup10);
 		
 		breedRepository.save(breed1);
 		breedRepository.save(breed2);

@@ -11,34 +11,32 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import hh.swd20.dogregistry.model.Breed;
-import hh.swd20.dogregistry.model.Dog;
-import hh.swd20.dogregistry.model.DogRepository;
+import hh.swd20.dogregistry.model.BreedRepository;
 import hh.swd20.dogregistry.model.FCIBreedGroup;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-public class DogRepositoryTest {
+public class BreedRepositoryTest {
 
     @Autowired
-    private DogRepository repository;
+    private BreedRepository repository;
 
     @Test
     public void findByName() {
-        List<Dog> dogs = repository.findByName("Vilkas Vieteri");
+        List<Breed> breeds = repository.findByName("Labradorinnoutaja");
         
-        assertThat(dogs).hasSize(1);
-        assertThat(dogs.get(0).getOwner()).isEqualTo("Leena Katos");
+        assertThat(breeds).hasSize(1);
     }  
     
     @Test
-    public void createNewDog() {
-    	Dog dog = new Dog("Etevän Elias", "Minna Virtanen", new Breed("Villakoira", new FCIBreedGroup("FCI 9 Seura- ja kääpiökoirat")));
-    	repository.save(dog);
-    	assertThat(dog.getDogId()).isNotNull();
+    public void createNewBreed() {
+    	Breed breed = new Breed("Villakoira", new FCIBreedGroup("FCI 9 Seura- ja kääpiökoirat"));
+    	repository.save(breed);
+    	assertThat(breed.getBreedId()).isNotNull();
     }  
     
     @Test
-    public void deleteAllDogs() {
+    public void deleteAllBreeds() {
         repository.deleteAll();
         assertThat(repository.count()).isEqualTo(0);
     }   
