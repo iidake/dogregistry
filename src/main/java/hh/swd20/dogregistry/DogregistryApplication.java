@@ -39,7 +39,6 @@ public class DogregistryApplication {
 		FCIBreedGroup breedGroup8 = new FCIBreedGroup("FCI 8 Noutajat, ylösajavat koirat ja vesikoirat");
 		FCIBreedGroup breedGroup9 = new FCIBreedGroup("FCI 9 Seurakoirat ja kääpiökoirat");
 		FCIBreedGroup breedGroup10 = new FCIBreedGroup("FCI 10 Vinttikoirat");
-	
 		
 		breedGroupRepository.save(breedGroup1);
 		breedGroupRepository.save(breedGroup2);
@@ -51,7 +50,6 @@ public class DogregistryApplication {
 		breedGroupRepository.save(breedGroup8);
 		breedGroupRepository.save(breedGroup9);
 		breedGroupRepository.save(breedGroup10);
-		
 		
 		Breed breed1 = new Breed("Kultainennoutaja", breedGroup8);
 		Breed breed2 = new Breed("Labradorinnoutaja", breedGroup8);
