@@ -10,9 +10,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Breed {
@@ -20,6 +21,7 @@ public class Breed {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long breedId;
+	@NotEmpty
 	private String name;
 	
     @ManyToOne

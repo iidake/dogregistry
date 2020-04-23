@@ -6,6 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -15,7 +16,9 @@ public class Dog {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long dogId;
+	@NotEmpty
 	private String name;
+	@NotEmpty
 	private String owner;
 	
     @ManyToOne

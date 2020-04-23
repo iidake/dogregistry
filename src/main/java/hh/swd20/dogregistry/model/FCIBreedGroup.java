@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
@@ -17,6 +18,7 @@ public class FCIBreedGroup {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long groupId;
+	@NotEmpty
 	private String name;
 	
 	@JsonBackReference
