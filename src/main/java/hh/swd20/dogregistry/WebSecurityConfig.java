@@ -39,20 +39,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
           .permitAll();
     	
     }
-//        http
-//        .authorizeRequests().antMatchers("/css/**").permitAll() //
-//        .and()
-//        .authorizeRequests()
-//          .anyRequest().authenticated()
-//          .and()
-//      .formLogin()
-//          .loginPage("/login")
-//          .defaultSuccessUrl("/index")
-//          .permitAll()
-//          .and()
-//      .logout()
-//          .permitAll();
-//    }
     
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
